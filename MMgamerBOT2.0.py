@@ -8,26 +8,26 @@ import time
 import json
 import requests
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='.')
 bot.remove_command('help')
 async def loop():
-    await bot.change_presence(game=discord.Game(name="!help", url="https://twitch.tv/EpicShardGaming", type=1))
+    await bot.change_presence(game=discord.Game(name=".help", url="https://twitch.tv/EpicShardGaming", type=1))
     asyncio.sleep(10)
     await bot.change_presence(game=discord.Game(name="mmgamerbot.com", url="https://twitch.tv/EpicShardGaming", type=1))
     asyncio.sleep(10)
-    await bot.change_presence(game=discord.Game(name="prefix: !", url="https://twitch.tv/EpicShardGaming", type=1))
+    await bot.change_presence(game=discord.Game(name="prefix: .", url="https://twitch.tv/EpicShardGaming", type=1))
 
 @bot.event
 async def on_ready():
     print ("Bot has Booted!")
     print ("I am running on " + bot.user.name)
     print ("With the ID: " + bot.user.id)
-    await bot.change_presence(game=discord.Game(name="mmgamerbot.com", url="https://twitch.tv/EpicShardGaming", type=1))
+    await bot.change_presence(game=discord.Game(name="Do .help", url="https://twitch.tv/EpicShardGaming", type=1))
     bot.loop.create_task(list_servers())
     
 @bot.event
 async def on_command_error(message, error):
-    embed=discord.Embed(title="Command Not Found", description="Whoops! I can't find that try `!help`", color=0x66009D)
+    embed=discord.Embed(title="Command Not Found", description="Whoops! I can't find that try `!help`", color=0xFFA500)
     await bot.send_message(message.channel, embed=embed)
 
 @bot.command(pass_context=True)
@@ -36,19 +36,19 @@ async def help(ctx):
     if False:
         pass
     else:
-        embed=discord.Embed(title="Help", description="`!help` <category/command> - gives you this list \n - `!warn` <user> <reason> - warn those spammy idiots (surround reason in doubble quotes!) \n - `!ping` - check the bot latency \n - `!kick` <user> - kick annoying people \n - `!embed` - tests a embed \n - `!delete` <amount> - clear spam \n - `!info` <user> - gets info about a user \n Need more help? Join our support server: https://discord.gg/vYAfQ5E", color=0x66009D)
+        embed=discord.Embed(title="Help", description="`!help` <category/command> - gives you this list \n - `!warn` <user> <reason> - warn those spammy idiots (surround reason in doubble quotes!) \n - `!ping` - check the bot latency \n - `!kick` <user> - kick annoying people \n - `!embed` - tests a embed \n - `!delete` <amount> - clear spam \n - `!info` <user> - gets info about a user \n Need more help? Join our support server: https://discord.gg/vYAfQ5E", color=0xFFA500)
         await bot.say(embed=embed)
 
 
 @bot.command(pass_context=True)
 async def cat(ctx):
-    embed=discord.Embed(title="Cat", color=0x66009D)
+    embed=discord.Embed(title="Cat", color=0xFFA500)
     embed.set_image(url="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif")
     await bot.say(embed=embed)
     
 @bot.command(pass_context=True)
 async def dog(ctx):
-    embed=discord.Embed(title="A dog as requested:", color=0x66009D)
+    embed=discord.Embed(title="A dog as requested:", color=0xFFA500)
     embed.set_image(url="https://media.giphy.com/media/Bc3SkXz1M9mjS/giphy.gif")
     await bot.say(embed=embed)
 
@@ -187,7 +187,7 @@ async def on_message(message):
     await bot.process_commands(message)
 @bot.event
 async def on_member_join(member: discord.Member):
-    embed = discord.Embed(title="User Joined!", description="{} Has Just Joined Us! Everyone hide ur headsets".format(member.name), color=0x66009D)
+    embed = discord.Embed(title="User Joined!", description="{} Has Just Joined Us! Everyone Prep the Dank Memes".format(member.name), color=0xFFA500)
     embed.set_thumbnail(url=member.avatar_url)
     await bot.send_message(bot.get_channel('437163805512826899'), embed=embed)
 bot.run(os.getenv('TOKEN'))
